@@ -26,7 +26,7 @@ function BookingTable() {
 
   }
   return (
-    <table className="table table-bordered">
+    <table className="table">
       <thead>
         <tr>
           <th scope="col">touristId</th>

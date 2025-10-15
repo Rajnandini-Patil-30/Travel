@@ -19,7 +19,7 @@ function DestinationTable() {
 
   }
   return (
-    <table className="table table-bordered">
+    <table className="table">
       <thead>
         <tr>
             <th>Name</th>
@@ -36,8 +36,7 @@ function DestinationTable() {
               <td>{destination.country}</td>
               <td>{destination.price}</td>
               <td><DestinationDelete deleteId={destination.destinationId} 
-              onDelete={() => setDestination(destinations.filter(d => d.destinationId !== destination.destinationId))}
-/></td>
+              onDelete={() => setDestination(destinations.filter(d => d.destinationId !== destination.destinationId))}/></td>
               <td><button onClick={() => handleUpdate(destination.destinationId)}>Update</button></td>
             </tr>
           )

@@ -9,7 +9,7 @@ function TouristDelete({deleteId, onDelete}) {
         }
     }
     return(
-        <button onClick={handleDelete}>Delete Tourist</button>
+        <button onClick={handleDelete} className="btn btn-primary">Delete Tourist</button>
     )
 }
 export default TouristDelete;

@@ -10,7 +10,7 @@ function BookingDelete({deleteId, onDelete}){
     }
   }
   return(
-    <button onClick={handleDelete}>Delete</button>
+    <button onClick={handleDelete} className="btn btn-primary">Delete</button>
   );
 
 }
