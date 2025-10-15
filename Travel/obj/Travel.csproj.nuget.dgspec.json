@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\patilraj\\Downloads\\Travel\\Travel\\Travel.csproj": {}
+    "C:\\Users\\Rajnandini\\OneDrive\\Documents\\DotNet\\Travel\\Travel\\Travel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\patilraj\\Downloads\\Travel\\Travel\\Travel.csproj": {
+    "C:\\Users\\Rajnandini\\OneDrive\\Documents\\DotNet\\Travel\\Travel\\Travel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\patilraj\\Downloads\\Travel\\Travel\\Travel.csproj",
+        "projectUniqueName": "C:\\Users\\Rajnandini\\OneDrive\\Documents\\DotNet\\Travel\\Travel\\Travel.csproj",
         "projectName": "Travel",
-        "projectPath": "C:\\Users\\patilraj\\Downloads\\Travel\\Travel\\Travel.csproj",
-        "packagesPath": "C:\\Users\\patilraj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\patilraj\\Downloads\\Travel\\Travel\\obj\\",
+        "projectPath": "C:\\Users\\Rajnandini\\OneDrive\\Documents\\DotNet\\Travel\\Travel\\Travel.csproj",
+        "packagesPath": "C:\\Users\\Rajnandini\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rajnandini\\OneDrive\\Documents\\DotNet\\Travel\\Travel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\patilraj\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Rajnandini\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

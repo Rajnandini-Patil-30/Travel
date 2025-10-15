@@ -10,7 +10,7 @@ export const deleteTourist = (id) => API.delete(`/Tourists/${id}`);
 
 export const getDestinations =() => API.get("/Destination");
 export const getDestination=(id)=>API.get(`/Destination/${id}`);
-export const createDestination=(data)=>API.post("/Destionation",data);
+export const createDestination=(data)=>API.post("/Destination",data);
 export const updateDestination=(id, data)=>API.put(`/Destination/${id}`,data);
 export const deleteDestination=(id)=>API.delete(`/Destination/${id}`);
 

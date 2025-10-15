@@ -41,6 +41,24 @@ namespace Travel.Controllers
         [HttpPost]
         public async Task<ActionResult<BookingDto>> CreateBooking(CreateBookingRequestDto bookingDto)
         {
+            // Validate referenced Tourist and Destination exist to avoid FK constraint errors
+            if (bookingDto.TouristId.HasValue)
+            {
+                var touristExists = await _context.Tourists.FindAsync(bookingDto.TouristId.Value);
+                if (touristExists == null)
+                {
+                    return BadRequest($"Tourist with id {bookingDto.TouristId.Value} does not exist.");
+                }
+            }
+            if (bookingDto.DestinationId.HasValue)
+            {
+                var destinationExists = await _context.Destination.FindAsync(bookingDto.DestinationId.Value);
+                if (destinationExists == null)
+                {
+                    return BadRequest($"Destination with id {bookingDto.DestinationId.Value} does not exist.");
+                }
+            }
+
             var bookingModel = bookingDto.ToBookingFromCreateDto();
             var createdBooking = await _bookingRepo.CreateBookingAsync(bookingModel);
             var createdBookingDto = BookingMapper.ToBookingDto(createdBooking);

@@ -18,7 +18,7 @@ namespace Travel.Mappers
                 Email = touristModel.Email,
                 PhoneNumber = touristModel.PhoneNumber,
                 PassportNumber = touristModel.PassportNumber,
-                Bookings= touristModel.Bookings.Select(b => b.ToBookingDto ()).ToList()
+                Bookings = touristModel.Bookings?.Select(b => b.ToBookingDto()).ToList() ?? new List<BookingDto>()
             };
         }
         public static Tourists ToTouristFromCreateDto(this CreateTouristRequestDto touristDto)

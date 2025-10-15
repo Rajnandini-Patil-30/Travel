@@ -1,6 +1,7 @@
 import { getBookings, deleteBookings } from "../api";
 import {useEffect, useState} from 'react';
 import BookingDelete from "./BookingDelete";
+import './booking.css'
 function BookingTable() {
   const[Bookings, setBookings] = useState([]);
   useEffect(()=>{
@@ -26,7 +27,7 @@ function BookingTable() {
 
   }
   return (
-    <table className="table">
+    <table border={1}>
       <thead>
         <tr>
           <th scope="col">touristId</th>
@@ -35,9 +36,11 @@ function BookingTable() {
           <th scope="col">startDate</th>
           <th scope="col">endDate</th>
           <th scope="col">cost</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
-      <tbody className="table-group-divider">
+      <tbody>
         {Bookings.map((booking=>
           (
             <tr key={booking.bookingId}>

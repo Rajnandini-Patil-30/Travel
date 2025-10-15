@@ -9,6 +9,8 @@ import Touristpage from "./Pages/Touristpage";
 import Destinationpage from "./Pages/Destinationpage";
 import BookingPage from "./Pages/BookingPage";
 import AddTourist from "./Tourists/AddTourist"
+import AddDestination from "./Destination/AddDestination";
+import AddBooking from "./Booking/AddBooking";
 function App() {
   return (
       <BrowserRouter>
@@ -19,6 +21,8 @@ function App() {
             <Route path="/destination" element={<Destinationpage/>} />
             <Route path="/booking" element={<BookingPage />} />
             <Route path="add-tourist" element={<AddTourist/>}/>
+            <Route path="add-destination" element={<AddDestination/>}/>
+            <Route path="add-booking" element={<AddBooking/>}/>
           </Routes>
       </BrowserRouter>
   );

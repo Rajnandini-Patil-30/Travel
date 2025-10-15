@@ -1,6 +1,7 @@
 import { getDestinations, deleteDestination } from "../api";
 import {useEffect, useState} from 'react';
 import DestinationDelete from './DestinationDelete';
+import './destination.css';
 function DestinationTable() {
   const [destinations,setDestination] = useState([]);
 
@@ -19,15 +20,18 @@ function DestinationTable() {
 
   }
   return (
-    <table className="table">
+    <table border={1}>
       <thead>
         <tr>
+          <th>Destination ID</th>
             <th>Name</th>
             <th>Country</th>
             <th>Price</th>
+            <th></th>
+            <th></th>
           </tr>
       </thead>
-      <tbody className="table-group-divider">
+      <tbody>
         {destinations.map((destination=>
           (
             <tr key={destination.destinationId}>
