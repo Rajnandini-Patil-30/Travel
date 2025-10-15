@@ -1,13 +1,13 @@
 function TouristSearch() {
   return (
-    <form class="d-flex" role="search">
+    <form className="d-flex" role="search">
       <input
-        class="form-control me-2"
+        className="form-control me-2"
         type="search"
         placeholder="Search"
         aria-label="Search"
       />
-      <button class="btn btn-outline-success" type="submit">
+      <button className="btn btn-outline-success" type="submit">
         Search
       </button>
     </form>
