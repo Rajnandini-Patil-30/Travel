@@ -1,10 +1,59 @@
 .app-content {
     margin: 15px;
     /* padding: 20px; */
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
-.header{
+
+.header {
     margin: 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Center items vertically */
     margin-bottom: 20px;
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 1.5rem; /* Larger font size */
+}
+
+.header .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.container {
+    padding: 20px;
+}
+
+.action-bar {
+    margin-bottom: 20px;
+}
+
+h5 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f1f1f1;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }

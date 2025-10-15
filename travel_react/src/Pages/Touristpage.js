@@ -14,8 +14,7 @@ function Touristpage() {
         <hr />
         <div className="container">
           <div className="action-bar">
-              <TouristSearch/>
-              
+              <TouristSearch/>  
           </div>
           <h5>
             Tourist List

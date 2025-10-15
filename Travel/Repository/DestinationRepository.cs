@@ -30,15 +30,25 @@ namespace Travel.Repository
 
         public async Task<Destination> DeleteDestinationAsync(int id)
         {
-            var DestinationModel = await _context.Destination.Include(x=>x.Bookings).FirstOrDefaultAsync(x=>x.DestinationId==id);
-            if (DestinationModel == null)
+            var destinationModel = await _context.Destination
+                .Include(x => x.Bookings)
+                .FirstOrDefaultAsync(x => x.DestinationId == id);
+
+            if (destinationModel == null)
             {
                 return null;
             }
-            _context.Booking.RemoveRange(DestinationModel.Bookings);
-            _context.Destination.Remove(DestinationModel);
+
+            // Remove related bookings
+            _context.Booking.RemoveRange(destinationModel.Bookings);
+
+            // Remove the destination
+            _context.Destination.Remove(destinationModel);
+
+            // Save changes
             await _context.SaveChangesAsync();
-            return DestinationModel;
+
+            return destinationModel;
         }
 
         public async Task<List<Destination>> GetAllDestinationAsync()
