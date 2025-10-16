@@ -6,7 +6,7 @@ function Destinationpage() {
   const navigate  = useNavigate();
 
   const handleOnClick = () => {
-    navigate('/add-destination');
+    navigate('/add-destination', { state: { mode: 'Add' } });
   };
 
 

@@ -1,10 +1,11 @@
 import { getDestinations, deleteDestination } from "../api";
 import {useEffect, useState} from 'react';
 import DestinationDelete from './DestinationDelete';
+import { useNavigate } from 'react-router-dom';
 import './destination.css';
 function DestinationTable() {
   const [destinations,setDestination] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(()=>{
     const fetchDestination= async()=>{
       try{
@@ -16,9 +17,9 @@ function DestinationTable() {
     };
      fetchDestination();
   }, []);
-  const handleUpdate=()=>{
-
-  }
+  const handleUpdate = (destination) => {
+    navigate('/add-destination', { state: { mode: 'Update', destination } });
+  };
   return (
     <table border={1}>
       <thead>
@@ -41,7 +42,7 @@ function DestinationTable() {
               <td>{destination.price}</td>
               <td><DestinationDelete deleteId={destination.destinationId} 
               onDelete={() => setDestination(destinations.filter(d => d.destinationId !== destination.destinationId))}/></td>
-              <td><button onClick={() => handleUpdate(destination.destinationId)}>Update</button></td>
+              <td><button onClick={() => handleUpdate(destination)}>Update</button></td>
             </tr>
           )
         ))}

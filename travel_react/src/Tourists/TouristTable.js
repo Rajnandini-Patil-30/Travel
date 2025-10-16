@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { deleteTourist, getTourists } from '../api';
 import './tourist.css';
 import TouristDelete from './TouristDelete';
 const TouristTable = () => {
   const [tourists, setTourists] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTourists = async () => {
@@ -30,9 +32,9 @@ const TouristTable = () => {
     }
     }
   }
-  const handleUpdate=()=>{
-
-  }
+  const handleUpdate = (tourist) => {
+    navigate('/add-tourist', { state: { mode: 'Update', tourist } });
+  };
   return (
     <div>
       <table border={1}>
@@ -58,7 +60,7 @@ const TouristTable = () => {
               <td>{tourist.passportNumber}</td>
               <td><TouristDelete deleteId={tourist.touristId} 
               onDelete={()=> setTourists(tourists.filter(t=>t.touristId!==tourist.touristId))}/></td>
-              <td><button onClick={() => handleUpdate(tourist.touristId)}>Update</button></td>
+              <td><button onClick={() => handleUpdate(tourist)}>Update</button></td>
             </tr>
           ))}
         </tbody>

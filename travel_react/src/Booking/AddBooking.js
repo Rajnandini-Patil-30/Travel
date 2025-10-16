@@ -1,72 +1,78 @@
-import { createBookings } from "../api";
+import { createBookings, updateBookings } from "../api";
 import { useState } from "react";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-function AddBooking(){
-    const navigate  = useNavigate();
+function AddBooking() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { mode, booking } = location.state || { mode: 'Add', booking: {} };
 
-     const [formData, setFormData] = useState({
-        touristId: '',
-        destinationId: '',
-        bookingDate: '',
-        startDate: '',
-        endDate: '',
-        cost: ''
-    });
-    const handleInputChange = (e) => {
+  const [formData, setFormData] = useState({
+    touristId: booking.touristId || '',
+    destinationId: booking.destinationId || '',
+    bookingDate: booking.bookingDate || '0001-01-01T00:00:00',
+    startDate: booking.startDate || '0001-01-01T00:00:00',
+    endDate: booking.endDate || '0001-01-01T00:00:00',
+    cost: booking.cost || '0'
+  });
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
       [name]: value
     }));
   };
-    const handleCreate=async (e)=>{
-        e.preventDefault();
-        try{
-            const responseData=await createBookings(formData);
-            alert("Booking added successfully");
-            navigate('/Booking');
-            setFormData({ touristId: '', destinationId: '', bookingDate: '', startDate: '', endDate: '', cost: '' });
-        }catch(err){
-            console.error(err); 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (mode === 'Add') {
+        await createBookings(formData);
+        alert("Booking added successfully");
+      } else if (mode === 'Update') {
+        await updateBookings(booking.bookingId, formData);
+        alert("Booking updated successfully");
+      }
+      navigate('/booking');
+      setFormData({ touristId: '', destinationId: '', bookingDate: '', startDate: '', endDate: '', cost: '' });
+    } catch (err) {
+      console.error(err);
     }
-}
-    return(
-       <div className="form-container">
-        <h2>Booking Information</h2>
-        
-        <form action="#" method="POST" onSubmit={handleCreate}>
-            
-            <div className="form-group">
-                <label htmlFor="touristId">touristId</label>
-                <input  id="touristId" name="touristId" placeholder="Goa" value={formData.touristId} onChange={handleInputChange} required/>
-            </div>
+  };
 
-            <div className="form-group">
-                <label htmlFor="destinationId">destinationId</label>
-                <input  id="destinationId" name="destinationId" placeholder="India" value={formData.destinationId} onChange={handleInputChange} required/>
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="bookingDate">bookingDate</label>
-                <input  id="bookingDate" name="bookingDate" placeholder="3000" value={formData.bookingDate} onChange={handleInputChange} required/>
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="startDate">startDate</label>
-                <input  id="startDate" name="startDate" placeholder="3000" value={formData.startDate} onChange={handleInputChange} required/>
-            </div>
-            <div className="form-group">
-                <label htmlFor="endDate">endDate</label>
-                <input  id="endDate" name="endDate" placeholder="3000" value={formData.endDate} onChange={handleInputChange} required/>
-            </div>
-            <div className="form-group">
-                <label htmlFor="cost">cost</label>
-                <input  id="cost" name="cost" placeholder="3000" value={formData.cost} onChange={handleInputChange} required/>
-            </div>
-            <button type="submit" className="submit-btn" >Submit Details</button>
-        </form>
+  return (
+    <div className="form-container">
+      <h2>{mode === 'Add' ? 'Add Booking' : 'Update Booking'}</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="touristId">Tourist ID</label>
+          <input type="text" id="touristId" name="touristId" placeholder="Tourist ID" value={formData.touristId} onChange={handleInputChange} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="destinationId">Destination ID</label>
+          <input type="text" id="destinationId" name="destinationId" placeholder="Destination ID" value={formData.destinationId} onChange={handleInputChange} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="bookingDate">Booking Date</label>
+          <input  id="bookingDate" name="bookingDate" value={formData.bookingDate} onChange={handleInputChange} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="startDate">Start Date</label>
+          <input  id="startDate" name="startDate" value={formData.startDate} onChange={handleInputChange} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="endDate">End Date</label>
+          <input  id="endDate" name="endDate" value={formData.endDate} onChange={handleInputChange} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="cost">Cost</label>
+          <input type="number" id="cost" name="cost" placeholder="Cost" value={formData.cost} onChange={handleInputChange} required />
+        </div>
+        <button type="submit" className="submit-btn">{mode === 'Add' ? 'Submit Details' : 'Update Details'}</button>
+      </form>
     </div>
-    )
+  );
 }
+
 export default AddBooking;

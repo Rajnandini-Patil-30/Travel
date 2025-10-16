@@ -6,7 +6,7 @@ function BookingPage() {
   const navigate  = useNavigate();
 
   const handleOnClick = () => {
-    navigate('/add-booking');
+    navigate('/add-booking', { state: { mode: 'Add' } });
   };
   return (
     <>

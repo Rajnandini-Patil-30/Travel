@@ -1,9 +1,12 @@
 import { getBookings, deleteBookings } from "../api";
 import {useEffect, useState} from 'react';
 import BookingDelete from "./BookingDelete";
+import { useNavigate } from 'react-router-dom';
 import './booking.css'
 function BookingTable() {
   const[Bookings, setBookings] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(()=>{
     const fetchBookingData= async()=>{
       try{
@@ -23,9 +26,9 @@ function BookingTable() {
       console.error(err);
     }
   }
-  const handleUpdate=()=>{
-
-  }
+  const handleUpdate = (booking) => {
+    navigate('/add-booking', { state: { mode: 'Update', booking } });
+  };
   return (
     <table border={1}>
       <thead>
@@ -53,7 +56,7 @@ function BookingTable() {
               <td><BookingDelete deleteId={booking.bookingId} 
               onDelete={() => setBookings(Bookings.filter(d => d.bookingId !== booking.bookingId))}
 /></td>
-              <td><button onClick={() => handleUpdate(booking.bookingId)}>Update</button></td>
+              <td><button onClick={() => handleUpdate(booking)}>Update</button></td>
             </tr>
           )
         ))}

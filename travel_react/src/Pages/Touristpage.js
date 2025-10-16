@@ -6,10 +6,8 @@ function Touristpage() {
   const navigate  = useNavigate();
 
   const handleOnClick = () => {
-    navigate('/add-tourist');
+    navigate('/add-tourist', { state: { mode: 'Add' } });
   };
-
-
   return (
     <>
       <div className="app-content">
